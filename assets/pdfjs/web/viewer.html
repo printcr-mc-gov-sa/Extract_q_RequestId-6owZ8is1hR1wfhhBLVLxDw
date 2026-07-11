@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PDF.js viewer</title>
+<link rel="stylesheet" href="pdf_viewer.css"><style>
+html,body,#outerContainer{height:100%;margin:0}#outerContainer{display:flex;flex-direction:column;background:#525659}.toolbar{display:flex;align-items:center;gap:6px;padding:7px 10px;background:#323639;color:#fff;position:relative;z-index:2}.toolbar button,.toolbar select,.toolbar input{min-height:30px}.toolbar input{width:48px}.spacer{flex:1}#viewerContainer{position:relative;flex:1;overflow:auto}.hidden{display:none!important}#error{padding:16px;color:#fff;background:#8b1e1e}
+</style></head><body><div id="outerContainer"><div class="toolbar" role="toolbar" aria-label="PDF.js toolbar">
+<button id="previous" title="Previous page">‹</button><button id="next" title="Next page">›</button><label>Page <input id="pageNumber" type="number" min="1" value="1"></label><span id="numPages">of 0</span>
+<button id="zoomOut" title="Zoom out">−</button><select id="scaleSelect" aria-label="Zoom"><option value="page-width">Page Width</option><option value="page-fit">Page Fit</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.25">125%</option><option value="1.5">150%</option><option value="2">200%</option></select><button id="zoomIn" title="Zoom in">+</button>
+<span class="spacer"></span><input id="findInput" type="search" placeholder="Find in document"><button id="findPrevious">‹ Find</button><button id="findNext">Find ›</button><a id="download" download>Download</a><button id="print">Print</button></div>
+<div id="error" class="hidden"></div><div id="viewerContainer" tabindex="0"><div id="viewer" class="pdfViewer"></div></div></div>
+<script type="module">
+import * as pdfjsLib from "../pdf.min.mjs";
+globalThis.pdfjsLib = pdfjsLib;
+const { EventBus, PDFLinkService, PDFFindController, PDFViewer } = await import("./pdf_viewer.mjs");
+const asset = value => new URL(value, import.meta.url).href;
+const file = new URLSearchParams(location.search).get("file");
+const error = document.getElementById("error");
+if (!file) throw new Error("Missing PDF file parameter.");
+const pdfUrl = new URL(file, location.href).href;
+pdfjsLib.GlobalWorkerOptions.workerSrc = asset("../pdf.worker.min.mjs");
+const eventBus = new EventBus();
+const linkService = new PDFLinkService({ eventBus });
+const findController = new PDFFindController({ linkService, eventBus });
+const pdfViewer = new PDFViewer({ container: document.getElementById("viewerContainer"), viewer: document.getElementById("viewer"), eventBus, linkService, findController });
+linkService.setViewer(pdfViewer);
+const pageNumber = document.getElementById("pageNumber");
+const numPages = document.getElementById("numPages");
+const updatePage = () => { pageNumber.value = pdfViewer.currentPageNumber; };
+eventBus.on("pagechanging", updatePage);
+eventBus.on("pagesinit", () => { pdfViewer.currentScaleValue = "page-width"; });
+document.getElementById("previous").onclick = () => { pdfViewer.currentPageNumber = Math.max(1, pdfViewer.currentPageNumber - 1); };
+document.getElementById("next").onclick = () => { pdfViewer.currentPageNumber = Math.min(pdfViewer.pagesCount, pdfViewer.currentPageNumber + 1); };
+pageNumber.onchange = () => { pdfViewer.currentPageNumber = Number(pageNumber.value) || 1; };
+document.getElementById("zoomIn").onclick = () => { pdfViewer.currentScale *= 1.1; };
+document.getElementById("zoomOut").onclick = () => { pdfViewer.currentScale /= 1.1; };
+document.getElementById("scaleSelect").onchange = event => { pdfViewer.currentScaleValue = event.target.value; };
+const find = (previous) => eventBus.dispatch("find", { source: window, type: previous ? "again" : "", query: document.getElementById("findInput").value, phraseSearch: true, highlightAll: true, findPrevious: previous });
+document.getElementById("findPrevious").onclick = () => find(true); document.getElementById("findNext").onclick = () => find(false);
+document.getElementById("download").href = pdfUrl; document.getElementById("print").onclick = () => window.print();
+pdfjsLib.getDocument({ url: pdfUrl, cMapUrl: asset("../cmaps/"), cMapPacked: true, standardFontDataUrl: asset("../standard_fonts/") }).promise.then(pdf => { pdfViewer.setDocument(pdf); linkService.setDocument(pdf, null); numPages.textContent = "of " + pdf.numPages; }).catch(reason => { error.textContent = "Unable to load PDF: " + reason.message; error.classList.remove("hidden"); });
+</script></body></html>

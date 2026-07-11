@@ -1,6 +1,6 @@
 {
   "targetUrl": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
-  "savedAt": "2026-07-11T22:39:12.940Z",
+  "savedAt": "2026-07-11T23:02:55.798Z",
   "pages": [
     {
       "url": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
@@ -15,14 +15,14 @@
       "method": "GET",
       "type": "document",
       "page": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
-      "capturedAt": "2026-07-11T22:39:10.730Z"
+      "capturedAt": "2026-07-11T23:02:44.482Z"
     }
   ],
   "apiEntries": [],
   "byteIdentityChecks": [],
   "verification": {
     "ok": true,
-    "checkedAt": "2026-07-11T22:39:12.931Z",
+    "checkedAt": "2026-07-11T23:02:55.765Z",
     "missing": []
   },
   "urlMap": [
@@ -226,6 +226,38 @@
     "assets/pdfjs/standard_fonts/LiberationSans-BoldItalic.ttf",
     "assets/pdfjs/standard_fonts/LiberationSans-Italic.ttf",
     "assets/pdfjs/standard_fonts/LiberationSans-Regular.ttf",
+    "assets/pdfjs/web/images/altText_add.svg",
+    "assets/pdfjs/web/images/altText_disclaimer.svg",
+    "assets/pdfjs/web/images/altText_done.svg",
+    "assets/pdfjs/web/images/altText_spinner.svg",
+    "assets/pdfjs/web/images/altText_warning.svg",
+    "assets/pdfjs/web/images/annotation-check.svg",
+    "assets/pdfjs/web/images/annotation-comment.svg",
+    "assets/pdfjs/web/images/annotation-help.svg",
+    "assets/pdfjs/web/images/annotation-insert.svg",
+    "assets/pdfjs/web/images/annotation-key.svg",
+    "assets/pdfjs/web/images/annotation-newparagraph.svg",
+    "assets/pdfjs/web/images/annotation-noicon.svg",
+    "assets/pdfjs/web/images/annotation-note.svg",
+    "assets/pdfjs/web/images/annotation-paperclip.svg",
+    "assets/pdfjs/web/images/annotation-paragraph.svg",
+    "assets/pdfjs/web/images/annotation-pushpin.svg",
+    "assets/pdfjs/web/images/cursor-editorFreeHighlight.svg",
+    "assets/pdfjs/web/images/cursor-editorFreeText.svg",
+    "assets/pdfjs/web/images/cursor-editorInk.svg",
+    "assets/pdfjs/web/images/cursor-editorTextHighlight.svg",
+    "assets/pdfjs/web/images/editor-toolbar-delete.svg",
+    "assets/pdfjs/web/images/loading-icon.gif",
+    "assets/pdfjs/web/images/messageBar_closingButton.svg",
+    "assets/pdfjs/web/images/messageBar_warning.svg",
+    "assets/pdfjs/web/images/secondaryToolbarButton-documentProperties.svg",
+    "assets/pdfjs/web/images/toolbarButton-editorHighlight.svg",
+    "assets/pdfjs/web/images/toolbarButton-menuArrow.svg",
+    "assets/pdfjs/web/pdf_viewer.css",
+    "assets/pdfjs/web/pdf_viewer.d.mts",
+    "assets/pdfjs/web/pdf_viewer.mjs",
+    "assets/pdfjs/web/pdf_viewer.mjs.map",
+    "assets/pdfjs/web/viewer.html",
     "clone-report.html",
     "downloads/Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf",
     "index.html"

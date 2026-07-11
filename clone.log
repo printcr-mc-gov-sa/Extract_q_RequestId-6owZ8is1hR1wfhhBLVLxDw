@@ -1,13 +1,13 @@
-[2026-07-11T22:39:08.470Z] Starting Website Cloner Pro {"targetUrl":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","outDir":"E:\\Pusiness\\react-cloner-pro-v2\\react-cloner-pro-v2\\react-cloner\\output","maxPages":100}
-[2026-07-11T22:39:09.817Z] Saved file {"file":"assets/favicon.ico","bytes":5430}
-[2026-07-11T22:39:09.819Z] Downloaded special file {"url":"https://printcr.mc.gov.sa/favicon.ico","dest":"assets/favicon.ico"}
-[2026-07-11T22:39:10.712Z] Crawling page {"url":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","depth":0}
-[2026-07-11T22:39:11.861Z] ERROR Request failed {"url":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","method":"GET","type":"document","failure":{"errorText":"net::ERR_ABORTED"}}
-[2026-07-11T22:39:12.699Z] Saved download viewer {"url":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","file":"-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html","download":"downloads/Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf"}
-[2026-07-11T22:39:12.841Z] Bundled PDF.js viewer assets {"directory":"assets/pdfjs"}
-[2026-07-11T22:39:12.847Z] Saved file {"file":"-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html","bytes":9263}
-[2026-07-11T22:39:12.855Z] Saved file {"file":"Download/Extract/index.html","bytes":9263}
-[2026-07-11T22:39:12.860Z] Saved file {"file":"index.html","bytes":9210}
-[2026-07-11T22:39:12.911Z] Saved file {"file":"clone-report.html","bytes":1872}
-[2026-07-11T22:39:12.931Z] Export verification passed
-[2026-07-11T22:39:13.058Z] Clone complete {"outDir":"E:\\Pusiness\\react-cloner-pro-v2\\react-cloner-pro-v2\\react-cloner\\output","pages":1,"files":193}
+[2026-07-11T23:02:40.040Z] Starting Website Cloner Pro {"targetUrl":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","outDir":"E:\\Pusiness\\react-cloner-pro-v2\\react-cloner-pro-v2\\react-cloner\\output","maxPages":100}
+[2026-07-11T23:02:42.329Z] Saved file {"file":"assets/favicon.ico","bytes":5430}
+[2026-07-11T23:02:42.332Z] Downloaded special file {"url":"https://printcr.mc.gov.sa/favicon.ico","dest":"assets/favicon.ico"}
+[2026-07-11T23:02:44.444Z] Crawling page {"url":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","depth":0}
+[2026-07-11T23:02:46.833Z] ERROR Request failed {"url":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","method":"GET","type":"document","failure":{"errorText":"net::ERR_ABORTED"}}
+[2026-07-11T23:02:55.368Z] Saved download viewer {"url":"https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==","file":"-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html","download":"downloads/Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf"}
+[2026-07-11T23:02:55.662Z] Bundled PDF.js viewer assets {"directory":"assets/pdfjs"}
+[2026-07-11T23:02:55.671Z] Saved file {"file":"-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html","bytes":7189}
+[2026-07-11T23:02:55.711Z] Saved file {"file":"Download/Extract/index.html","bytes":7180}
+[2026-07-11T23:02:55.723Z] Saved file {"file":"index.html","bytes":7145}
+[2026-07-11T23:02:55.730Z] Saved file {"file":"clone-report.html","bytes":1872}
+[2026-07-11T23:02:55.765Z] Export verification passed
+[2026-07-11T23:02:58.909Z] Clone complete {"outDir":"E:\\Pusiness\\react-cloner-pro-v2\\react-cloner-pro-v2\\react-cloner\\output","pages":1,"files":225}
