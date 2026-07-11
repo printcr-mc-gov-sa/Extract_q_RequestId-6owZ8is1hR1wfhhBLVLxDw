@@ -1,6 +1,6 @@
 {
   "targetUrl": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
-  "savedAt": "2026-07-11T20:37:57.159Z",
+  "savedAt": "2026-07-11T22:17:57.265Z",
   "pages": [
     {
       "url": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
@@ -15,14 +15,14 @@
       "method": "GET",
       "type": "document",
       "page": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
-      "capturedAt": "2026-07-11T20:37:49.633Z"
+      "capturedAt": "2026-07-11T22:17:54.947Z"
     }
   ],
   "apiEntries": [],
   "byteIdentityChecks": [],
   "verification": {
     "ok": true,
-    "checkedAt": "2026-07-11T20:37:57.158Z",
+    "checkedAt": "2026-07-11T22:17:57.257Z",
     "missing": []
   },
   "urlMap": [
