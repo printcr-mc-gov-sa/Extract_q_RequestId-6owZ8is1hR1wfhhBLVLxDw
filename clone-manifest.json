@@ -1,0 +1,46 @@
+{
+  "targetUrl": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
+  "savedAt": "2026-07-11T20:37:57.159Z",
+  "pages": [
+    {
+      "url": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
+      "file": "-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html",
+      "depth": 0,
+      "linksFound": 0
+    }
+  ],
+  "networkRequests": [
+    {
+      "url": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
+      "method": "GET",
+      "type": "document",
+      "page": "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
+      "capturedAt": "2026-07-11T20:37:49.633Z"
+    }
+  ],
+  "apiEntries": [],
+  "byteIdentityChecks": [],
+  "verification": {
+    "ok": true,
+    "checkedAt": "2026-07-11T20:37:57.158Z",
+    "missing": []
+  },
+  "urlMap": [
+    [
+      "https://printcr.mc.gov.sa/favicon.ico",
+      "assets/favicon.ico"
+    ],
+    [
+      "https://printcr.mc.gov.sa/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==",
+      "-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html"
+    ]
+  ],
+  "files": [
+    "-RequestId-6owZ8is1hR1wfhhBLVLxDw-/index.html",
+    "Download/Extract/index.html",
+    "assets/favicon.ico",
+    "clone-report.html",
+    "downloads/Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf",
+    "index.html"
+  ]
+}
