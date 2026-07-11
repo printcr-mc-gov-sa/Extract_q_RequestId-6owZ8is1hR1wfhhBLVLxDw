@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head><base href="./"><script>
+(function () {
+  try {
+    var currentPath = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
+    var marker = "/";
+    var markerIndex = currentPath.lastIndexOf(marker);
+    var deploymentBase = markerIndex >= 0 ? currentPath.slice(0, markerIndex) : '';
+    window.__CLONED_DEPLOYMENT_BASE__ = deploymentBase;
+    var targetRoute = deploymentBase + "/Download/Extract?RequestId=6owZ8is1hR1wfhhBLVLxDw==";
+    if (location.pathname + location.search + location.hash !== targetRoute) {
+      history.replaceState(null, document.title, targetRoute);
+    }
+  } catch (_) {}
+})();
+</script><script>
+(function () {
+  var assetPath = /^(?:\/)?(?:assets|css|js|images|fonts|media)(?:\/|$)/;
+
+  function isAssetPath(value) {
+    return typeof value === 'string' && assetPath.test(value);
+  }
+
+  function normalizeAssetPath(value) {
+    if (typeof value !== 'string' || !value) return value;
+
+    var raw = value.trim();
+
+    try {
+      var parsed = new URL(raw, location.href);
+      if (isAssetPath(parsed.pathname)) {
+        return (window.__CLONED_DEPLOYMENT_BASE__ || '') + parsed.pathname + parsed.search + parsed.hash;
+      }
+    } catch (_) {}
+
+    var stripped = raw.replace(/^[a-z]+:\/\/[^/]+/i, '');
+    if (isAssetPath(stripped)) {
+      return (window.__CLONED_DEPLOYMENT_BASE__ || '') + (stripped.startsWith('/') ? stripped : '/' + stripped);
+    }
+
+    return value;
+  }
+
+  function resolveCss(value) {
+    if (typeof value !== 'string') return value;
+    return value.replace(/url\\((['"]?)(.*?)\\1\\)/gi, function (match, quote, raw) {
+      var resolved = normalizeAssetPath(raw.trim());
+      return resolved === raw.trim() ? match : 'url(' + quote + resolved + quote + ')';
+    });
+  }
+
+  var setAttribute = Element.prototype.setAttribute;
+  Element.prototype.setAttribute = function (name, value) {
+    var attribute = String(name).toLowerCase();
+    if (attribute === 'src' || attribute === 'href' || attribute === 'poster' || attribute === 'data') value = normalizeAssetPath(value);
+    if (attribute === 'style') value = resolveCss(value);
+    return setAttribute.call(this, name, value);
+  };
+
+  [['HTMLImageElement', 'src'], ['HTMLScriptElement', 'src'], ['HTMLLinkElement', 'href'], ['HTMLSourceElement', 'src'], ['HTMLVideoElement', 'poster'], ['HTMLAudioElement', 'src']].forEach(function (entry) {
+    var Type = window[entry[0]];
+    if (!Type) return;
+    var descriptor = Object.getOwnPropertyDescriptor(Type.prototype, entry[1]);
+    if (!descriptor || !descriptor.set || !descriptor.get) return;
+    Object.defineProperty(Type.prototype, entry[1], {
+      configurable: true,
+      enumerable: descriptor.enumerable,
+      get: descriptor.get,
+      set: function (value) { return descriptor.set.call(this, normalizeAssetPath(value)); }
+    });
+  });
+
+  var originalFetch = window.fetch && window.fetch.bind(window);
+  if (originalFetch) window.fetch = function (input, init) {
+    if (typeof input === 'string') input = normalizeAssetPath(input);
+    else if (input && input.url) input = new Request(normalizeAssetPath(input.url), input);
+    return originalFetch(input, init);
+  };
+
+  var open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function (method, url) {
+    arguments[1] = normalizeAssetPath(url);
+    return open.apply(this, arguments);
+  };
+
+  var setProperty = CSSStyleDeclaration.prototype.setProperty;
+  CSSStyleDeclaration.prototype.setProperty = function (name, value, priority) {
+    return setProperty.call(this, name, resolveCss(value), priority);
+  };
+})();
+</script><script>
+window.__CLONED_API_CACHE__ = [];
+(function(){
+  var cache = window.__CLONED_API_CACHE__ || [];
+  var originalFetch = window.fetch ? window.fetch.bind(window) : null;
+  function normalize(url) {
+    try { return new URL(String(url), location.href).href; } catch (_) { return String(url || ''); }
+  }
+  function find(url) {
+    var normalized = normalize(url);
+    return cache.find(function(item) {
+      return normalized === item.url || normalized.indexOf(item.pathname) !== -1 || normalized.indexOf(item.file) !== -1;
+    });
+  }
+  function makeResponse(item) {
+    var body = item.encoding === 'base64'
+      ? Uint8Array.from(atob(item.body), function(c) { return c.charCodeAt(0); })
+      : item.body;
+    return new Response(body, { status: item.status || 200, headers: item.headers || { 'content-type': item.contentType || 'application/json' } });
+  }
+  if (originalFetch) {
+    window.fetch = function(input, init) {
+      var url = typeof input === 'string' ? input : input && input.url;
+      var item = find(url);
+      return item ? Promise.resolve(makeResponse(item)) : originalFetch(input, init);
+    };
+  }
+  var NativeXHR = window.XMLHttpRequest;
+  if (NativeXHR) {
+    window.XMLHttpRequest = function() {
+      var xhr = new NativeXHR();
+      var lastUrl = '';
+      var open = xhr.open.bind(xhr);
+      var send = xhr.send.bind(xhr);
+      xhr.open = function(method, url) {
+        lastUrl = url;
+        return open.apply(xhr, arguments);
+      };
+      xhr.send = function(body) {
+        var item = find(lastUrl);
+        if (!item) return send.call(xhr, body);
+        var responseText = item.encoding === 'base64' ? atob(item.body) : String(item.body || '');
+        Object.defineProperties(xhr, {
+          readyState: { get: function() { return 4; } },
+          status: { get: function() { return item.status || 200; } },
+          statusText: { get: function() { return 'OK'; } },
+          responseText: { get: function() { return responseText; } },
+          response: { get: function() { return responseText; } },
+          responseURL: { get: function() { return lastUrl; } }
+        });
+        xhr.getAllResponseHeaders = function() { return 'content-type: ' + (item.contentType || 'application/json'); };
+        xhr.getResponseHeader = function(name) { return String(name).toLowerCase() === 'content-type' ? (item.contentType || 'application/json') : null; };
+        queueMicrotask(function() {
+          xhr.onreadystatechange && xhr.onreadystatechange(new Event('readystatechange'));
+          xhr.onload && xhr.onload(new Event('load'));
+          xhr.dispatchEvent(new Event('readystatechange'));
+          xhr.dispatchEvent(new Event('load'));
+        });
+      };
+      return xhr;
+    };
+    window.XMLHttpRequest.prototype = NativeXHR.prototype;
+    Object.assign(window.XMLHttpRequest, NativeXHR);
+  }
+})();
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf</title></head>
+<body style="margin:0"><iframe src="downloads/Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf" title="Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf" style="border:0;width:100vw;height:100vh"><a href="downloads/Extract_q_RequestId-6owZ8is1hR1wfhhBLVLxDw.pdf">Download file</a></iframe></body>
+</html>
